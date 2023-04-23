@@ -1,4 +1,4 @@
-package com.neoris.PruebaCRUD;
+package com.company.PruebaCRUD;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

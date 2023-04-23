@@ -1,9 +1,9 @@
-package com.neoris.PruebaCRUD.model;
+package com.company.PruebaCRUD.model;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.math.BigDecimal;
 
@@ -20,7 +20,8 @@ public class Producto {
     private String nombre;
 
     @Column(nullable = false)
-    @Min(value = 0, message = "El precio no puede ser negativo")
+    // No admitir valores menor a 0:
+    @ColumnDefault("0")
     private BigDecimal precio;
 
     private String descripcion;

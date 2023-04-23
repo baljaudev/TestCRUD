@@ -1,6 +1,6 @@
-package com.neoris.PruebaCRUD.repository;
+package com.company.PruebaCRUD.repository;
 
-import com.neoris.PruebaCRUD.model.Producto;
+import com.company.PruebaCRUD.model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 // Interface para la tabla Producto de la base de datos

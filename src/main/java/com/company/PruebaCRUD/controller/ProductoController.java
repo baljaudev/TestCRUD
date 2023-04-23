@@ -1,7 +1,7 @@
-package com.neoris.PruebaCRUD.controller;
+package com.company.PruebaCRUD.controller;
 
-import com.neoris.PruebaCRUD.model.Producto;
-import com.neoris.PruebaCRUD.service.ProductoService;
+import com.company.PruebaCRUD.model.Producto;
+import com.company.PruebaCRUD.service.ProductoService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

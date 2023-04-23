@@ -5,7 +5,7 @@ This is a basic Spring Boot webapp project that implements the main HTTP methods
 ## Requirements
 To build and run this project, you will need:
 
-Java 17
+Java 17  
 Maven
 ## Getting Started
 The application will start running at http://localhost:8080

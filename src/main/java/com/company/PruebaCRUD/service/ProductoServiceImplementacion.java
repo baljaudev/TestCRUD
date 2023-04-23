@@ -1,7 +1,7 @@
-package com.neoris.PruebaCRUD.service;
+package com.company.PruebaCRUD.service;
 
-import com.neoris.PruebaCRUD.model.Producto;
-import com.neoris.PruebaCRUD.repository.ProductoRepository;
+import com.company.PruebaCRUD.model.Producto;
+import com.company.PruebaCRUD.repository.ProductoRepository;
 import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Service;
