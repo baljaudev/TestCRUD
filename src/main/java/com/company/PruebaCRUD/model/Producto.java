@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
 
-import java.math.BigDecimal;
-
 @Data
 @Entity
 @Table(name = "producto")
@@ -20,9 +18,7 @@ public class Producto {
     private String nombre;
 
     @Column(nullable = false)
-    // No admitir valores menor a 0:
-    @ColumnDefault("0")
-    private BigDecimal precio;
+    private Double precio;
 
     private String descripcion;
 }

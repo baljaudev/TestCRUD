@@ -39,6 +39,7 @@ public class ProductoServiceImplementacion implements ProductoService {
     public Producto updateProductoById(Long id, Producto producto) {
         Producto productoEncontrado = productoRepository.findById(producto.getId()).orElse(null);
         if (productoEncontrado != null) {
+            productoEncontrado.setNombre(producto.getNombre());
             productoEncontrado.setPrecio(producto.getPrecio());
             productoEncontrado.setDescripcion(producto.getDescripcion());
             productoRepository.save(productoEncontrado);

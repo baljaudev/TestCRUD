@@ -27,17 +27,13 @@ public class ProductoController {
 
     @PostMapping("/guardar")
     public ResponseEntity<Producto> save(@Valid @RequestBody Producto producto) {
-        if (producto.getNombre() == null) {
-            throw new RuntimeException("El nombre del producto es requerido");
-        } else if (producto.getPrecio() == null) {
-            throw new RuntimeException("El precio del producto es requerido");
-        } else if (producto.getDescripcion() == null) {
-            throw new RuntimeException("La descripción del producto es requerida");
-        }else {
+        boolean productoOk = checkProduct(producto);
+        if (productoOk) {
             productoService.saveProducto(producto);
             return new ResponseEntity<>(producto, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
     }
 
     // http://localhost:8080/producto/mostrar
@@ -77,11 +73,10 @@ public class ProductoController {
     // http://localhost:8080/producto/actualizar/1
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<Producto> updateById(@PathVariable Long id, @RequestBody Producto producto) {
-        // Si el producto existe, lo actualiza y devuelve el producto actualizado
-        if (productoService.updateProductoById(id, producto) != null) {
+        // Si el producto existe y los datos del producto son correctos, actualiza el producto y regresa el producto actualizado
+        if (productoService.updateProductoById(id, producto) != null && checkProduct(producto)) {
             return new ResponseEntity<>(productoService.updateProductoById(id, producto), HttpStatus.OK);
         } else {
-            // Si el producto no existe, dewvuelve un 404
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -107,4 +102,16 @@ public class ProductoController {
         }
     }
 
+    // Método para validar que los campos del producto no estén vacíos
+    private boolean checkProduct(Producto producto) {
+        if (producto.getNombre() == null || producto.getNombre().isEmpty()) {
+            throw new RuntimeException("El nombre del producto es requerido");
+        } else if (producto.getPrecio() == null || producto.getPrecio().isNaN() || producto.getPrecio() <= 0) {
+            throw new RuntimeException("El precio del producto es requerido y debe ser mayor a 0");
+        } else if (producto.getDescripcion() == null || producto.getDescripcion().isEmpty()) {
+            throw new RuntimeException("La descripción del producto es requerida");
+        }else {
+            return true;
+        }
+    }
 }
