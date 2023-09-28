@@ -3,7 +3,6 @@ package com.company.PruebaCRUD.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 
 @Data
 @Entity
